@@ -1,6 +1,7 @@
 <%@ page import="com.show.model.Recruit" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.show.model.Department" %>
+<%@ page import="com.show.model.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     String path = request.getContextPath();
@@ -23,15 +24,36 @@
             text-align: center;
         }
         h1{
-            background-color: red;
+            background-color: lightskyblue;
             margin: 0 auto;
             text-align: center
         }
     </style>
 </head>
 <body>
+<h1>招聘信息</h1>
 <%
     List<Recruit> recruits= (List<Recruit>) request.getAttribute("recruits");
+    int totalPages= (int) request.getAttribute("totalPages");
+    User user= (User) session.getAttribute("u");
+%>
+<% if (user==null){ %>
+<form action="toLogin" method="post" style="margin:0;display:inline;">
+    <input id="login" type="submit" value="登录">
+</form>
+<form action="toRegister" style="margin:0;display:inline;">
+    <input id="register" type="submit" value="注册">
+</form>
+<% }else{ %>
+<span>欢迎${sessionScope.get("u").getName()}</span>
+<form action="CvList" style="margin:0;display:inline;">
+    <input type="submit" value="浏览简历">
+</form>
+<form action="logout" style="margin:0;display:inline;">
+    <input type="submit" value="注销用户">
+</form>
+<%
+    }
 %>
 <table border="1" cellspacing="0">
     <tr>
@@ -41,6 +63,7 @@
         <th>人数</th>
         <th>描述</th>
         <th>发布时间</th>
+        <th>投递</th>
     </tr>
     <%
         for (int i = 0; i < recruits.size(); i++) {
@@ -52,10 +75,23 @@
         <td><%=recruits.get(i).getNumber()%></td>
         <td><%=recruits.get(i).getDescription()%></td>
         <td><%=recruits.get(i).getDate()%></td>
+        <td>
+            <form action="getCV" method="post">
+                <input type="hidden" name="rid" value="<%=recruits.get(i).getId()%>">
+                <input type="submit" value="投递">
+            </form>
+        </td>
     </tr>
     <%
         }
     %>
-</table>
+    </table>
+    <%
+        for (int i = 1; i <=totalPages; i++) {
+    %>
+    <a href="?currentPage=<%=i%>"><%=i%></a>
+    <%
+        }
+    %>
 </body>
 </html>
