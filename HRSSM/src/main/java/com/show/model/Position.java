@@ -12,12 +12,21 @@ public class Position implements Serializable{
     private int salary;
     private Department department;
     private List<Recruit> recruit;
+    private List<Staff> staff;
 
     public Position() {
     }
 
     public Position(int id) {
         this.id = id;
+    }
+
+    public List<Staff> getStaff() {
+        return staff;
+    }
+
+    public void setStaff(List<Staff> staff) {
+        this.staff = staff;
     }
 
     public List<Recruit> getRecruit() {
@@ -68,6 +77,7 @@ public class Position implements Serializable{
                 ", salary=" + salary +
                 ", department=" + department +
                 ", recruit=" + recruit +
+                ", staff=" + staff +
                 '}';
     }
 }

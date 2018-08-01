@@ -30,7 +30,8 @@
 <a href="unRead">未读面试申请</a>
 <a href="isRead">已读面试申请</a>
 <a href="forReply">待回复面试申请</a>
-<a href="employment">待录用面试申请</a>
+<a href="employment">待录用面试申请</a><br>
+<a href="listDepartment">部门职位管理</a>
 <form action="ret" method="post">
     <input type="submit" name="返回" value="注销"/>
 </form>

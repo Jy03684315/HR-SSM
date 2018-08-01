@@ -62,7 +62,7 @@
             </form>
         </td>
         <td>
-            <form action="" method="post">
+            <form action="toAddUser" method="post">
                 <input type="hidden" name="id" value="<%=interview.getId()%>">
                 <input type="submit" value="录用">
             </form>

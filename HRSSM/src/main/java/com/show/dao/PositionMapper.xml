@@ -5,8 +5,54 @@
         <id property="id" column="P_ID"/>
         <result property="name" column="P_NAME"/>
         <result property="salary" column="P_SALARY"/>
+        <association property="department" javaType="department">
+            <id property="id" column="D_ID"/>
+            <result property="name" column="D_NAME"/>
+            <result property="date" column="D_TIME"/>
+        </association>
+        <collection property="staff" ofType="staff">
+            <id property="id" column="S_ID"/>
+            <result property="name" column="S_NAME"/>
+            <result property="pass" column="S_PASS"/>
+            <result property="state" column="S_STATE"/>
+            <result property="date" column="S_DATE"/>
+            <result property="sName" column="S_SNAME"/>
+            <result property="sex" column="S_SEX"/>
+            <result property="idCard" column="S_IDCARD"/>
+            <result property="birth" column="S_BIRTH"/>
+            <result property="graduation" column="S_GRADUATION"/>
+            <result property="education" column="S_EDUCATION"/>
+            <result property="certificate" column="S_CERTIFICATE"/>
+        </collection>
+        <collection property="recruit" ofType="recruit">
+            <id property="id" column="R_ID"/>
+        </collection>
     </resultMap>
+    <insert id="addPosition">
+        INSERT INTO T_POSITION(P_ID, P_DID, P_NAME, P_SALARY) VALUES (SEQ_T_POSITION.nextval,#{department.id},#{name},#{salary})
+    </insert>
+    <update id="updatePosition">
+        UPDATE T_POSITION SET P_NAME=#{name},P_SALARY=#{salary} WHERE P_ID=#{id}
+    </update>
+    <delete id="deletePositionById">
+        DELETE FROM T_POSITION WHERE P_ID=#{id}
+    </delete>
     <select id="positionList" resultMap="positionMap">
         SELECT * FROM T_POSITION
+    </select>
+    <select id="getPositionByIdS" resultMap="positionMap">
+        SELECT * FROM T_POSITION p,T_STAFF s WHERE p.P_ID=s.S_PID AND p.P_ID=#{id}
+    </select>
+    <select id="getPositionByIdR" resultMap="positionMap">
+        SELECT * FROM T_POSITION p,T_RECRUIT r WHERE p.P_ID=r.R_PID AND p.P_ID=#{id}
+    </select>
+    <select id="getPositionByName" resultMap="positionMap">
+        SELECT * FROM T_POSITION WHERE P_NAME=#{name}
+    </select>
+    <select id="positionListWD" resultMap="positionMap">
+        SELECT * FROM T_POSITION p,T_DEPARTMENT d WHERE p.P_DID=d.D_ID
+    </select>
+    <select id="getPositionById" resultMap="positionMap">
+        SELECT * FROM T_POSITION WHERE P_ID=#{id}
     </select>
 </mapper>

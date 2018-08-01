@@ -1,7 +1,55 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.show.dao.DepartmentMapper">
-    <select id="getDp" resultType="department">
+    <resultMap id="departmentMap" type="department">
+        <id property="id" column="D_ID"/>
+        <result property="name" column="D_NAME"/>
+        <result property="date" column="D_TIME"/>
+        <collection property="positions" ofType="position">
+            <id property="id" column="P_ID"/>
+            <result property="name" column="P_NAME"/>
+            <result property="salary" column="P_SALARY"/>
+            <collection property="staff" ofType="staff">
+                <id property="id" column="S_ID"/>
+                <result property="name" column="S_NAME"/>
+                <result property="pass" column="S_PASS"/>
+                <result property="state" column="S_STATE"/>
+                <result property="date" column="S_DATE"/>
+                <result property="sName" column="S_SNAME"/>
+                <result property="sex" column="S_SEX"/>
+                <result property="idCard" column="S_IDCARD"/>
+                <result property="birth" column="S_BIRTH"/>
+                <result property="graduation" column="S_GRADUATION"/>
+                <result property="education" column="S_EDUCATION"/>
+                <result property="certificate" column="S_CERTIFICATE"/>
+            </collection>
+        </collection>
+    </resultMap>
+    <insert id="addDp">
+        INSERT INTO T_DEPARTMENT(D_ID, D_NAME, D_TIME) VALUES (SEQ_T_DEPARTMENT.nextval,#{name},#{date})
+    </insert>
+    <update id="updateDp">
+        UPDATE T_DEPARTMENT SET D_NAME=#{name} WHERE D_ID=#{id}
+    </update>
+    <delete id="deleteDp">
+        DELETE FROM T_DEPARTMENT WHERE D_ID=#{id}
+    </delete>
+    <select id="getDp" resultMap="departmentMap">
+        SELECT * FROM T_DEPARTMENT d,T_POSITION p WHERE d.D_ID=p.P_DID
+    </select>
+    <select id="getDpById" resultMap="departmentMap">
+        SELECT * FROM T_DEPARTMENT d,T_POSITION p WHERE d.D_ID=p.P_DID AND d.D_ID=#{id}
+    </select>
+    <select id="getDpAll" resultMap="departmentMap">
         SELECT * FROM T_DEPARTMENT
+    </select>
+    <select id="getDpByName" resultMap="departmentMap">
+        SELECT * FROM T_DEPARTMENT WHERE D_NAME=#{name}
+    </select>
+    <select id="getDpByIdALL" resultMap="departmentMap">
+        SELECT * FROM T_DEPARTMENT WHERE D_ID=#{id}
+    </select>
+    <select id="getDpByIdALLS" resultMap="departmentMap">
+        SELECT * FROM T_DEPARTMENT d,T_POSITION p,T_STAFF s WHERE d.D_ID=p.P_DID AND p.P_ID=s.S_PID AND d.D_ID=#{id}
     </select>
 </mapper>

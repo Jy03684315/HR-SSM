@@ -40,7 +40,6 @@
 <%
     List<Cv> cvs= (List<Cv>) request.getAttribute("cvs");
     int totalPages= (int) request.getAttribute("totalPages");
-    String d= (String) session.getAttribute("d");
 %>
 <table border="1" cellspacing="0">
     <tr>

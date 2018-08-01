@@ -19,4 +19,36 @@ public class DepartmentServiceImpl implements DepartmentService{
     public List<Department> getDp() {
         return departmentMapper.getDp();
     }
+
+    public Department getDpById(Department department) {
+        return departmentMapper.getDpById(department);
+    }
+
+    public void addDp(Department department) {
+        departmentMapper.addDp(department);
+    }
+
+    public List<Department> getDpAll() {
+        return departmentMapper.getDpAll();
+    }
+
+    public Department getDpByName(Department department) {
+        return departmentMapper.getDpByName(department);
+    }
+
+    public Department getDpByIdALL(Department department) {
+        return departmentMapper.getDpByIdALL(department);
+    }
+
+    public void updateDp(Department department) {
+        departmentMapper.updateDp(department);
+    }
+
+    public Department getDpByIdALLS(Department department) {
+        return departmentMapper.getDpByIdALLS(department);
+    }
+
+    public void deleteDp(Department department) {
+        departmentMapper.deleteDp(department);
+    }
 }

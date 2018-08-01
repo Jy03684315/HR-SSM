@@ -19,4 +19,36 @@ public class PositionServiceImpl implements PositionService{
     public List<Position> positionList() {
         return positionMapper.positionList();
     }
+
+    public Position getPositionByIdS(Position position) {
+        return positionMapper.getPositionByIdS(position);
+    }
+
+    public void deletePositionById(Position position) {
+        positionMapper.deletePositionById(position);
+    }
+
+    public Position getPositionByIdR(Position position) {
+        return positionMapper.getPositionByIdR(position);
+    }
+
+    public void addPosition(Position position) {
+        positionMapper.addPosition(position);
+    }
+
+    public Position getPositionByName(Position position) {
+        return positionMapper.getPositionByName(position);
+    }
+
+    public List<Position> positionListWD() {
+        return positionMapper.positionListWD();
+    }
+
+    public Position getPositionById(Position position) {
+        return positionMapper.getPositionById(position);
+    }
+
+    public void updatePosition(Position position) {
+        positionMapper.updatePosition(position);
+    }
 }

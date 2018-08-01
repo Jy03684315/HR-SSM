@@ -9,4 +9,12 @@ import java.util.List;
  */
 public interface DepartmentService {
     List<Department> getDp();
+    Department getDpById(Department department);
+    void addDp(Department department);
+    List<Department> getDpAll();
+    Department getDpByName(Department department);
+    Department getDpByIdALL(Department department);
+    void updateDp(Department department);
+    Department getDpByIdALLS(Department department);
+    void deleteDp(Department department);
 }

@@ -1,9 +1,6 @@
 package com.show.controller;
 
-import com.show.model.Cv;
-import com.show.model.Interview;
-import com.show.model.Recruit;
-import com.show.model.User;
+import com.show.model.*;
 import com.show.service.InterviewService;
 import com.show.utils.DoPage;
 import org.springframework.stereotype.Controller;
@@ -141,5 +138,24 @@ public class InterviewController {
         interview1.setState(5);
         interviewService.changeState(interview1);
         return checkItv(currentPage, model, session);
+    }
+    @RequestMapping("/toAddUser")
+    public String toAddUser(Interview interview,HttpSession session){
+        Interview interview1=interviewService.getInterviewById(interview);
+        Staff staff=new Staff();
+        staff.setPosition(interview1.getRecruit().getPosition());
+        staff.setState(1);
+        Date date=new Date();
+        staff.setDate(date);
+        staff.setsName(interview1.getCv().getuName());
+        staff.setSex(interview1.getCv().getSex());
+        staff.setIdCard(interview1.getCv().getIdCard());
+        staff.setBirth(interview1.getCv().getBirth());
+        staff.setGraduation(interview1.getCv().getGraduation());
+        staff.setEducation(interview1.getCv().getEducation());
+        staff.setCertificate(interview1.getCv().getCertificate());
+        session.setAttribute("i",interview1);
+        session.setAttribute("s",staff);
+        return "addStaff";
     }
 }
