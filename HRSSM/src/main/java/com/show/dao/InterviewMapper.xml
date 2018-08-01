@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.show.dao.InterviewMapper">
+    <resultMap id="interviewMap" type="interview">
+        <id property="id" column="I_ID"/>
+        <result property="time" column="I_TIME"/>
+        <result property="state" column="I_STATE"/>
+        <association property="cv" javaType="cv">
+            <id property="id" column="C_ID"/>
+            <result property="cName" column="C_CNAME"/>
+            <result property="uName" column="C_UNAME"/>
+            <result property="sex" column="C_SEX"/>
+            <result property="birth" column="C_BIRTH"/>
+            <result property="idCard" column="C_IDCARD"/>
+            <result property="nation" column="C_NATION"/>
+            <result property="ps" column="C_PS"/>
+            <result property="height" column="C_HEIGHT"/>
+            <result property="graduation" column="C_GRADUATION"/>
+            <result property="company" column="C_COMPANY"/>
+            <result property="certificate" column="C_CERTIFICATE"/>
+            <result property="evaluation" column="C_EVALUATION"/>
+            <result property="education" column="C_EDUCATION"/>
+        </association>
+        <association property="recruit" javaType="recruit">
+            <id property="id" column="R_ID"/>
+            <result property="date" column="R_TIME"/>
+            <result property="description" column="R_DESCRIPTION"/>
+            <result property="number" column="R_NUMBER"/>
+            <result property="salary" column="R_SALARY"/>
+            <result property="state" column="R_STATE"/>
+            <association property="position" javaType="position">
+                <id property="id" column="P_ID"/>
+                <result property="name" column="P_NAME"/>
+                <result property="salary" column="P_SALARY"/>
+                <association property="department" javaType="department">
+                    <id property="id" column="D_ID"/>
+                    <result property="name" column="D_NAME"/>
+                    <result property="date" column="D_TIME"/>
+                </association>
+            </association>
+        </association>
+    </resultMap>
+    <insert id="addInterview">
+        INSERT INTO T_INTERVIEW(I_ID, I_RID, I_CID, I_STATE)
+        VALUES (SEQ_T_INTERVIEW.nextval,#{recruit.id},#{cv.id},#{state})
+    </insert>
+    <update id="changeState">
+        UPDATE T_INTERVIEW SET I_STATE=#{state} WHERE I_ID=#{id}
+    </update>
+    <update id="updateInterview">
+        UPDATE T_INTERVIEW SET I_STATE=#{state},I_TIME=#{time} WHERE I_ID=#{id}
+    </update>
+    <select id="getInterviewByState" resultMap="interviewMap">
+        SELECT * FROM T_INTERVIEW i,T_CV cv,T_RECRUIT r,T_POSITION p,T_DEPARTMENT d
+        WHERE i.I_CID=cv.C_ID AND i.I_RID=r.R_ID AND r.R_PID=p.P_ID AND p.P_DID=d.D_ID AND I_STATE=#{state}
+    </select>
+    <select id="getInterviewByStateAndPage" resultMap="interviewMap">
+        SELECT * FROM (SELECT rownum rn,i.*,cv.*,r.*,p.*,d.*
+        FROM T_INTERVIEW i,T_CV cv,T_RECRUIT r,T_POSITION p,T_DEPARTMENT d
+        WHERE i.I_CID=cv.C_ID AND i.I_RID=r.R_ID AND r.R_PID=p.P_ID AND p.P_DID=d.D_ID AND I_STATE=#{0})A
+        WHERE A.rn between #{1} AND #{2}
+    </select>
+    <select id="getInterviewById" resultMap="interviewMap">
+        SELECT * FROM T_INTERVIEW i,T_CV cv,T_RECRUIT r,T_POSITION p,T_DEPARTMENT d
+        WHERE i.I_CID=cv.C_ID AND i.I_RID=r.R_ID AND r.R_PID=p.P_ID AND p.P_DID=d.D_ID AND I_ID=#{id}
+    </select>
+    <select id="getInterviewByStateU" resultMap="interviewMap">
+        SELECT * FROM T_INTERVIEW i,T_CV cv,T_RECRUIT r,T_POSITION p,T_DEPARTMENT d
+        WHERE i.I_CID=cv.C_ID AND i.I_RID=r.R_ID AND r.R_PID=p.P_ID AND p.P_DID=d.D_ID AND cv.C_UID=#{0} AND I_STATE=#{1}
+    </select>
+    <select id="getInterviewByStateUAndPage" resultMap="interviewMap">
+        SELECT * FROM (SELECT rownum rn,i.*,cv.*,r.*,p.*,d.*
+        FROM T_INTERVIEW i,T_CV cv,T_RECRUIT r,T_POSITION p,T_DEPARTMENT d
+        WHERE i.I_CID=cv.C_ID AND i.I_RID=r.R_ID AND r.R_PID=p.P_ID AND p.P_DID=d.D_ID AND cv.C_UID=#{0} AND I_STATE=#{1})A
+        WHERE A.rn between #{2} AND #{3}
+    </select>
+
+</mapper>

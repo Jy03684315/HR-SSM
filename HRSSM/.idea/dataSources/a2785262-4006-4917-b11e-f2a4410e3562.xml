@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="@localhost">
+  <database-model serializer="dbm" rdbms="ORACLE" format-version="4.2">
+    <root id="1"/>
+    <schema id="2" parent="1" name="HAHA">
+      <ObjectId>48</ObjectId>
+      <IntrospectionTimestamp>2018-07-30.11:10:07</IntrospectionTimestamp>
+      <CreatedTimestamp>2018-07-25.16:38:31</CreatedTimestamp>
+      <ModifiedTimestamp>2018-07-30.11:03:30</ModifiedTimestamp>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="PUBLIC">
+      <ObjectId>1</ObjectId>
+    </schema>
+    <schema id="4" parent="1" name="SYS">
+      <ObjectId>0</ObjectId>
+    </schema>
+    <schema id="5" parent="1" name="SYSTEM">
+      <ObjectId>5</ObjectId>
+    </schema>
+    <schema id="6" parent="1" name="OUTLN">
+      <ObjectId>9</ObjectId>
+    </schema>
+    <schema id="7" parent="1" name="DIP">
+      <ObjectId>14</ObjectId>
+    </schema>
+    <schema id="8" parent="1" name="ORACLE_OCM">
+      <ObjectId>21</ObjectId>
+    </schema>
+    <schema id="9" parent="1" name="DBSNMP">
+      <ObjectId>29</ObjectId>
+    </schema>
+    <schema id="10" parent="1" name="APPQOSSYS">
+      <ObjectId>30</ObjectId>
+    </schema>
+    <schema id="11" parent="1" name="CTXSYS">
+      <ObjectId>32</ObjectId>
+    </schema>
+    <schema id="12" parent="1" name="XDB">
+      <ObjectId>34</ObjectId>
+    </schema>
+    <schema id="13" parent="1" name="ANONYMOUS">
+      <ObjectId>35</ObjectId>
+    </schema>
+    <schema id="14" parent="1" name="MDSYS">
+      <ObjectId>42</ObjectId>
+    </schema>
+    <schema id="15" parent="1" name="HR">
+      <ObjectId>43</ObjectId>
+    </schema>
+    <schema id="16" parent="1" name="FLOWS_FILES">
+      <ObjectId>44</ObjectId>
+    </schema>
+    <schema id="17" parent="1" name="APEX_PUBLIC_USER">
+      <ObjectId>45</ObjectId>
+    </schema>
+    <schema id="18" parent="1" name="APEX_040000">
+      <ObjectId>47</ObjectId>
+    </schema>
+    <schema id="19" parent="1" name="SHOP">
+      <ObjectId>49</ObjectId>
+    </schema>
+    <schema id="20" parent="1" name="XS$NULL">
+      <ObjectId>2147483638</ObjectId>
+    </schema>
+    <sequence id="21" parent="2" name="SEQ_T_CV">
+      <ObjectId>20293</ObjectId>
+      <CreatedTimestamp>2018-07-25.20:17:58</CreatedTimestamp>
+      <ModifiedTimestamp>2018-07-25.20:17:58</ModifiedTimestamp>
+      <SequenceIdentity>1..99999</SequenceIdentity>
+      <CacheSize>-2147483648</CacheSize>
+    </sequence>
+    <sequence id="22" parent="2" name="SEQ_T_DEPARTMENT">
+      <ObjectId>20300</ObjectId>
+      <CreatedTimestamp>2018-07-26.00:09:46</CreatedTimestamp>
+      <ModifiedTimestamp>2018-07-26.00:09:46</ModifiedTimestamp>
+      <SequenceIdentity>1..99999</SequenceIdentity>
+      <CacheSize>-2147483648</CacheSize>
+    </sequence>
+    <sequence id="23" parent="2" name="SEQ_T_INTERVIEW">
+      <ObjectId>20418</ObjectId>
+      <CreatedTimestamp>2018-07-30.11:03:30</CreatedTimestamp>
+      <ModifiedTimestamp>2018-07-30.11:03:30</ModifiedTimestamp>
+      <SequenceIdentity>1..99999</SequenceIdentity>
+      <CacheSize>-2147483648</CacheSize>
+    </sequence>
+    <sequence id="24" parent="2" name="SEQ_T_MANAGER">
+      <ObjectId>20417</ObjectId>
+      <CreatedTimestamp>2018-07-30.11:03:04</CreatedTimestamp>
+      <ModifiedTimestamp>2018-07-30.11:03:04</ModifiedTimestamp>
+      <SequenceIdentity>1..99999</SequenceIdentity>
+      <CacheSize>-2147483648</CacheSize>
+    </sequence>
+    <sequence id="25" parent="2" name="SEQ_T_POSITION">
+      <ObjectId>20303</ObjectId>
+      <CreatedTimestamp>2018-07-26.00:12:46</CreatedTimestamp>
+      <ModifiedTimestamp>2018-07-26.00:12:46</ModifiedTimestamp>
+      <SequenceIdentity>1..99999</SequenceIdentity>
+      <CacheSize>-2147483648</CacheSize>
+    </sequence>
+    <sequence id="26" parent="2" name="SEQ_T_RECRUIT">
+      <ObjectId>20290</ObjectId>
+      <CreatedTimestamp>2018-07-25.16:44:00</CreatedTimestamp>
+      <ModifiedTimestamp>2018-07-25.16:44:00</ModifiedTimestamp>
+      <SequenceIdentity>1..99999</SequenceIdentity>
+      <CacheSize>-2147483648</CacheSize>
+    </sequence>
+    <sequence id="27" parent="2" name="SEQ_T_USER">
+      <ObjectId>20287</ObjectId>
+      <CreatedTimestamp>2018-07-25.16:41:06</CreatedTimestamp>
+      <ModifiedTimestamp>2018-07-25.16:41:06</ModifiedTimestamp>
+      <SequenceIdentity>1..99999</SequenceIdentity>
+      <CacheSize>-2147483648</CacheSize>
+    </sequence>
+    <table id="28" parent="2" name="T_CV">
+      <ObjectId>20291</ObjectId>
+      <CreatedTimestamp>2018-07-25.20:17:27</CreatedTimestamp>
+      <ModifiedTimestamp>2018-07-28.17:41:43</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="29" parent="2" name="T_DEPARTMENT">
+      <ObjectId>20298</ObjectId>
+      <CreatedTimestamp>2018-07-26.00:09:13</CreatedTimestamp>
+      <ModifiedTimestamp>2018-07-26.16:12:04</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="30" parent="2" name="T_INTERVIEW">
+      <ObjectId>20415</ObjectId>
+      <CreatedTimestamp>2018-07-30.11:00:23</CreatedTimestamp>
+      <ModifiedTimestamp>2018-07-30.11:00:23</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="31" parent="2" name="T_MANAGER">
+      <ObjectId>20413</ObjectId>
+      <CreatedTimestamp>2018-07-30.10:56:38</CreatedTimestamp>
+      <ModifiedTimestamp>2018-07-30.10:56:38</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="32" parent="2" name="T_POSITION">
+      <ObjectId>20301</ObjectId>
+      <CreatedTimestamp>2018-07-26.00:12:03</CreatedTimestamp>
+      <ModifiedTimestamp>2018-07-26.00:12:03</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="33" parent="2" name="T_RECRUIT">
+      <ObjectId>20288</ObjectId>
+      <CreatedTimestamp>2018-07-25.16:43:24</CreatedTimestamp>
+      <ModifiedTimestamp>2018-07-25.19:51:32</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="34" parent="2" name="T_USER">
+      <ObjectId>20285</ObjectId>
+      <CreatedTimestamp>2018-07-25.16:38:31</CreatedTimestamp>
+      <ModifiedTimestamp>2018-07-25.16:38:31</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <column id="35" parent="28" name="C_ID">
+      <Position>1</Position>
+      <DataType>NUMBER(4)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="36" parent="28" name="C_CNAME">
+      <Position>2</Position>
+      <DataType>VARCHAR2(50)|0</DataType>
+    </column>
+    <column id="37" parent="28" name="C_SEX">
+      <Position>3</Position>
+      <DataType>VARCHAR2(50)|0</DataType>
+    </column>
+    <column id="38" parent="28" name="C_BIRTH">
+      <Position>4</Position>
+      <DataType>DATE|0</DataType>
+    </column>
+    <column id="39" parent="28" name="C_IDCARD">
+      <Position>5</Position>
+      <DataType>VARCHAR2(50)|0</DataType>
+    </column>
+    <column id="40" parent="28" name="C_NATION">
+      <Position>6</Position>
+      <DataType>VARCHAR2(50)|0</DataType>
+    </column>
+    <column id="41" parent="28" name="C_PS">
+      <Position>7</Position>
+      <DataType>VARCHAR2(50)|0</DataType>
+    </column>
+    <column id="42" parent="28" name="C_HEIGHT">
+      <Position>8</Position>
+      <DataType>VARCHAR2(50)|0</DataType>
+    </column>
+    <column id="43" parent="28" name="C_GRADUATION">
+      <Position>9</Position>
+      <DataType>VARCHAR2(50)|0</DataType>
+    </column>
+    <column id="44" parent="28" name="C_COMPANY">
+      <Position>10</Position>
+      <DataType>VARCHAR2(50)|0</DataType>
+    </column>
+    <column id="45" parent="28" name="C_CERTIFICATE">
+      <Position>11</Position>
+      <DataType>VARCHAR2(200)|0</DataType>
+    </column>
+    <column id="46" parent="28" name="C_EVALUATION">
+      <Position>12</Position>
+      <DataType>VARCHAR2(200)|0</DataType>
+    </column>
+    <column id="47" parent="28" name="C_EDUCATION">
+      <Position>13</Position>
+      <DataType>VARCHAR2(50)|0</DataType>
+    </column>
+    <column id="48" parent="28" name="C_UID">
+      <Position>14</Position>
+      <DataType>NUMBER(4)|0</DataType>
+    </column>
+    <column id="49" parent="28" name="C_UNAME">
+      <Position>15</Position>
+      <DataType>VARCHAR2(50)|0</DataType>
+    </column>
+    <index id="50" parent="28" name="SYS_C007042">
+      <ObjectId>20292</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2018-07-25.20:17:27</CreatedTimestamp>
+      <ModifiedTimestamp>2018-07-25.20:17:27</ModifiedTimestamp>
+      <TablespaceName>SYSTEM</TablespaceName>
+      <ColNames>C_ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="51" parent="28" name="SYS_C007042">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2018-07-25.20:17:27</ModifiedTimestamp>
+      <ColNames>C_ID</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>SYS_C007042</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="52" parent="29" name="D_ID">
+      <Position>1</Position>
+      <DataType>NUMBER(4)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="53" parent="29" name="D_NAME">
+      <Position>2</Position>
+      <DataType>VARCHAR2(50)|0</DataType>
+    </column>
+    <column id="54" parent="29" name="D_TIME">
+      <Position>3</Position>
+      <DataType>DATE|0</DataType>
+    </column>
+    <index id="55" parent="29" name="SYS_C007049">
+      <ObjectId>20299</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2018-07-26.00:09:13</CreatedTimestamp>
+      <ModifiedTimestamp>2018-07-26.00:09:13</ModifiedTimestamp>
+      <TablespaceName>SYSTEM</TablespaceName>
+      <ColNames>D_ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="56" parent="29" name="SYS_C007049">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2018-07-26.00:09:13</ModifiedTimestamp>
+      <ColNames>D_ID</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>SYS_C007049</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="57" parent="30" name="I_ID">
+      <Position>1</Position>
+      <DataType>NUMBER(4)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="58" parent="30" name="I_RID">
+      <Position>2</Position>
+      <DataType>NUMBER(4)|0</DataType>
+    </column>
+    <column id="59" parent="30" name="I_CID">
+      <Position>3</Position>
+      <DataType>NUMBER(4)|0</DataType>
+    </column>
+    <column id="60" parent="30" name="I_TIME">
+      <Position>4</Position>
+      <DataType>DATE|0</DataType>
+    </column>
+    <column id="61" parent="30" name="I_STATE">
+      <Position>5</Position>
+      <DataType>NUMBER(4)|0</DataType>
+    </column>
+    <index id="62" parent="30" name="SYS_C007080">
+      <ObjectId>20416</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2018-07-30.11:00:23</CreatedTimestamp>
+      <ModifiedTimestamp>2018-07-30.11:00:23</ModifiedTimestamp>
+      <TablespaceName>SYSTEM</TablespaceName>
+      <ColNames>I_ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="63" parent="30" name="SYS_C007080">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2018-07-30.11:00:23</ModifiedTimestamp>
+      <ColNames>I_ID</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>SYS_C007080</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="64" parent="31" name="M_ID">
+      <Position>1</Position>
+      <DataType>NUMBER(4)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="65" parent="31" name="M_NAME">
+      <Position>2</Position>
+      <DataType>VARCHAR2(50)|0</DataType>
+    </column>
+    <column id="66" parent="31" name="M_PASS">
+      <Position>3</Position>
+      <DataType>VARCHAR2(50)|0</DataType>
+    </column>
+    <index id="67" parent="31" name="SYS_C007078">
+      <ObjectId>20414</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2018-07-30.10:56:38</CreatedTimestamp>
+      <ModifiedTimestamp>2018-07-30.10:56:38</ModifiedTimestamp>
+      <TablespaceName>SYSTEM</TablespaceName>
+      <ColNames>M_ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="68" parent="31" name="SYS_C007078">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2018-07-30.10:56:38</ModifiedTimestamp>
+      <ColNames>M_ID</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>SYS_C007078</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="69" parent="32" name="P_ID">
+      <Position>1</Position>
+      <DataType>NUMBER(4)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="70" parent="32" name="P_DID">
+      <Position>2</Position>
+      <DataType>NUMBER(4)|0</DataType>
+    </column>
+    <column id="71" parent="32" name="P_NAME">
+      <Position>3</Position>
+      <DataType>VARCHAR2(50)|0</DataType>
+    </column>
+    <column id="72" parent="32" name="P_SALARY">
+      <Position>4</Position>
+      <DataType>NUMBER(8)|0</DataType>
+    </column>
+    <index id="73" parent="32" name="SYS_C007051">
+      <ObjectId>20302</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2018-07-26.00:12:03</CreatedTimestamp>
+      <ModifiedTimestamp>2018-07-26.00:12:03</ModifiedTimestamp>
+      <TablespaceName>SYSTEM</TablespaceName>
+      <ColNames>P_ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="74" parent="32" name="SYS_C007051">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2018-07-26.00:12:03</ModifiedTimestamp>
+      <ColNames>P_ID</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>SYS_C007051</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="75" parent="33" name="R_ID">
+      <Position>1</Position>
+      <DataType>NUMBER(4)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="76" parent="33" name="R_PID">
+      <Position>2</Position>
+      <DataType>NUMBER(4)|0</DataType>
+    </column>
+    <column id="77" parent="33" name="R_NUMBER">
+      <Position>3</Position>
+      <DataType>NUMBER(4)|0</DataType>
+    </column>
+    <column id="78" parent="33" name="R_SALARY">
+      <Position>4</Position>
+      <DataType>NUMBER(8)|0</DataType>
+    </column>
+    <column id="79" parent="33" name="R_TIME">
+      <Position>5</Position>
+      <DataType>DATE|0</DataType>
+    </column>
+    <column id="80" parent="33" name="R_DESCRIPTION">
+      <Position>6</Position>
+      <DataType>VARCHAR2(200)|0</DataType>
+    </column>
+    <column id="81" parent="33" name="R_STATE">
+      <Position>7</Position>
+      <DataType>NUMBER(4)|0</DataType>
+    </column>
+    <index id="82" parent="33" name="SYS_C007040">
+      <ObjectId>20289</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2018-07-25.16:43:24</CreatedTimestamp>
+      <ModifiedTimestamp>2018-07-25.16:43:24</ModifiedTimestamp>
+      <TablespaceName>SYSTEM</TablespaceName>
+      <ColNames>R_ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="83" parent="33" name="SYS_C007040">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2018-07-25.16:43:24</ModifiedTimestamp>
+      <ColNames>R_ID</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>SYS_C007040</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="84" parent="34" name="U_ID">
+      <Position>1</Position>
+      <DataType>NUMBER(4)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="85" parent="34" name="U_NAME">
+      <Position>2</Position>
+      <DataType>VARCHAR2(50)|0</DataType>
+    </column>
+    <column id="86" parent="34" name="U_PASS">
+      <Position>3</Position>
+      <DataType>VARCHAR2(50)|0</DataType>
+    </column>
+    <index id="87" parent="34" name="SYS_C007037">
+      <ObjectId>20286</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2018-07-25.16:38:31</CreatedTimestamp>
+      <ModifiedTimestamp>2018-07-25.16:38:31</ModifiedTimestamp>
+      <TablespaceName>SYSTEM</TablespaceName>
+      <ColNames>U_ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="88" parent="34" name="SYS_C007037">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2018-07-25.16:38:31</ModifiedTimestamp>
+      <ColNames>U_ID</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>SYS_C007037</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>

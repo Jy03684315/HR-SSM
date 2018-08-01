@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.show.dao.CvMapper">
+    <resultMap id="CvMap" type="Cv">
+        <id property="id" column="C_ID"/>
+        <result property="cName" column="C_CNAME"/>
+        <result property="uName" column="C_UNAME"/>
+        <result property="sex" column="C_SEX"/>
+        <result property="birth" column="C_BIRTH"/>
+        <result property="idCard" column="C_IDCARD"/>
+        <result property="nation" column="C_NATION"/>
+        <result property="ps" column="C_PS"/>
+        <result property="height" column="C_HEIGHT"/>
+        <result property="graduation" column="C_GRADUATION"/>
+        <result property="company" column="C_COMPANY"/>
+        <result property="certificate" column="C_CERTIFICATE"/>
+        <result property="evaluation" column="C_EVALUATION"/>
+        <result property="education" column="C_EDUCATION"/>
+        <association property="user" javaType="user">
+            <id property="id" column="U_ID"/>
+            <result property="name" column="U_NAME"/>
+            <result property="pass" column="U_PASS"/>
+        </association>
+    </resultMap>
+    <insert id="addCv">
+        INSERT INTO T_CV(C_ID, C_CNAME,C_UNAME, C_SEX, C_BIRTH, C_IDCARD, C_NATION, C_PS, C_HEIGHT, C_GRADUATION,
+        C_COMPANY, C_CERTIFICATE, C_EVALUATION, C_EDUCATION, C_UID)
+        VALUES (SEQ_T_CV.nextval,#{cName},#{uName},#{sex},#{birth},#{idCard},#{nation},#{ps},#{height},#{graduation},
+        #{company},#{certificate},#{evaluation},#{education},#{user.id})
+    </insert>
+    <update id="updateCv">
+        UPDATE T_CV SET C_CNAME=#{cName},C_UNAME=#{uName}, C_SEX=#{sex}, C_BIRTH=#{birth}, C_IDCARD=#{idCard},
+        C_NATION=#{nation}, C_PS=#{ps}, C_HEIGHT=#{height}, C_GRADUATION=#{graduation},C_COMPANY=#{company},
+        C_CERTIFICATE=#{certificate}, C_EVALUATION=#{evaluation}, C_EDUCATION=#{education}
+        WHERE C_ID=#{id}
+    </update>
+    <delete id="deleteCv">
+        DELETE FROM T_CV WHERE T_CV.C_ID=#{id}
+    </delete>
+    <select id="getCv" resultMap="CvMap">
+        SELECT * FROM T_CV,T_USER WHERE T_CV.C_UID=T_USER.U_ID AND T_USER.U_ID=#{id}
+    </select>
+    <select id="getCvByPage" resultMap="CvMap">
+        SELECT * FROM (SELECT rownum rn,cv.*,u.* FROM T_CV cv,T_USER u WHERE cv.C_UID=u.U_ID AND u.U_ID=#{0})A
+        WHERE A.rn BETWEEN #{1} AND #{2}
+    </select>
+    <select id="getCvById" resultMap="CvMap">
+        SELECT * FROM T_CV WHERE T_CV.C_ID=#{id}
+    </select>
+</mapper>

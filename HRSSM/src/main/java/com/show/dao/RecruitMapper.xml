@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.show.dao.RecruitMapper">
+    <resultMap id="recruitMap" type="recruit">
+        <id property="id" column="R_ID"/>
+        <result property="date" column="R_TIME"/>
+        <result property="description" column="R_DESCRIPTION"/>
+        <result property="number" column="R_NUMBER"/>
+        <result property="salary" column="R_SALARY"/>
+        <result property="state" column="R_STATE"/>
+        <association property="position" javaType="position">
+            <id property="id" column="P_ID"/>
+            <result property="name" column="P_NAME"/>
+            <result property="salary" column="P_SALARY"/>
+            <association property="department" javaType="department">
+                <id property="id" column="D_ID"/>
+                <result property="name" column="D_NAME"/>
+                <result property="date" column="D_TIME"/>
+            </association>
+        </association>
+    </resultMap>
+    <insert id="addRecruit">
+        INSERT INTO T_RECRUIT(R_ID, R_PID, R_NUMBER, R_SALARY, R_TIME, R_DESCRIPTION, R_STATE)
+        VALUES (SEQ_T_RECRUIT.nextval,#{position.id},#{number},#{salary},#{date},#{description},#{state})
+    </insert>
+    <update id="changeState">
+        UPDATE T_RECRUIT SET R_STATE=#{state} WHERE R_ID=#{id}
+    </update>
+    <update id="updateRecruit">
+        UPDATE T_RECRUIT SET R_DESCRIPTION=#{description},R_NUMBER=#{number},R_SALARY=#{salary},R_TIME=#{date},R_PID=#{position.id}
+        WHERE R_ID=#{id}
+    </update>
+    <delete id="deleteRecruit">
+        DELETE FROM T_RECRUIT WHERE R_ID=#{id}
+    </delete>
+    <select id="getRecruit" resultMap="recruitMap">
+        SELECT * FROM T_RECRUIT r,T_POSITION p,T_DEPARTMENT d
+        WHERE r.R_PID=p.P_ID AND p.P_DID=d.D_ID AND R_STATE=#{state}
+    </select>
+    <select id="getRecruitByStateAndPage" resultMap="recruitMap">
+        SELECT * FROM
+        (SELECT rownum rn,r.*,p.*,d.* FROM T_RECRUIT r,T_POSITION p,T_DEPARTMENT d
+        WHERE r.R_PID=p.P_ID AND p.P_DID=d.D_ID AND R_STATE=#{0})A
+        WHERE A.rn between #{1} and #{2}
+    </select>
+    <select id="getRecruitById" resultMap="recruitMap">
+        SELECT * FROM T_RECRUIT WHERE R_ID=#{id}
+    </select>
+</mapper>
