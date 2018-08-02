@@ -1,9 +1,9 @@
-<%@ page import="com.show.model.Position" %>
+<%@ page import="com.show.model.Train" %>
 <%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: Show
   Date: 2018/8/2
-  Time: 3:03
+  Time: 23:40
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -29,35 +29,39 @@
     </style>
 </head>
 <body>
-<h1>职位列表</h1>
+<h1>未发布培训信息</h1>
 <%
-    List<Position> positions= (List<Position>) request.getAttribute("positions");
+    List<Train> trains= (List<Train>) request.getAttribute("trains");
 %>
 <table border="1" cellspacing="0">
     <tr>
-        <th>职位名称</th>
-        <th>基本薪资</th>
-        <th>所属部门</th>
-        <th>职位修改</th>
-        <th>职位删除</th>
+        <th>主题</th>
+        <th>内容</th>
+        <th>开始时间</th>
+        <th>结束时间</th>
+        <th>发布时间</th>
+        <th>发布</th>
+        <th>修改</th>
     </tr>
     <%
-        for (int i = 0; i < positions.size(); i++) {
+        for (Train train : trains) {
     %>
     <tr>
-        <td><%=positions.get(i).getName()%></td>
-        <td><%=positions.get(i).getSalary()%></td>
-        <td><%=positions.get(i).getDepartment().getName()%></td>
+        <td><%=train.getTheme()%></td>
+        <td><%=train.getContent()%></td>
+        <td><%=train.getBegin()%></td>
+        <td><%=train.getEnd()%></td>
+        <td><%=train.getTime()%></td>
         <td>
-            <form action="toUpdatePosition" method="post">
-                <input type="hidden" name="id" value="<%=positions.get(i).getId()%>">
-                <input type="submit" value="修改">
+            <form action="deliverT" method="post">
+                <input type="hidden" name="id" value="<%=train.getId()%>">
+                <input type="submit" value="发布">
             </form>
         </td>
         <td>
-            <form action="deletePosition" method="post">
-                <input type="hidden" name="id" value="<%=positions.get(i).getId()%>">
-                <input type="submit" value="删除">
+            <form action="toUpdateT" method="post">
+                <input type="hidden" name="id" value="<%=train.getId()%>">
+                <input type="submit" value="修改">
             </form>
         </td>
     </tr>
@@ -65,8 +69,7 @@
         }
     %>
 </table>
-${fail}
-<form action="listDepartment" method="post">
+<form action="staffManage" method="post">
     <input type="submit" name="返回" value="返回上一页"/>
 </form>
 </body>

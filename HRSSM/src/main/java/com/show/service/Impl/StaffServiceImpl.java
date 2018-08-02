@@ -6,6 +6,7 @@ import com.show.service.StaffService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by Show on 2018/8/1.
@@ -17,5 +18,9 @@ public class StaffServiceImpl implements StaffService{
 
     public void addStaff(Staff staff) {
         staffMapper.addStaff(staff);
+    }
+
+    public List<Staff> getStaffD() {
+        return staffMapper.getStaffD();
     }
 }

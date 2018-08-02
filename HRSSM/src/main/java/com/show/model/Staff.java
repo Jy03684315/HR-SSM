@@ -2,6 +2,7 @@ package com.show.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Show on 2018/8/1.
@@ -20,8 +21,26 @@ public class Staff implements Serializable{
     private String education;//学历
     private String certificate;//证书
     private Position position;//职位
+    private String remark;//备注
+    private List<Train> trains;//培训
 
     public Staff() {
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    public List<Train> getTrains() {
+        return trains;
+    }
+
+    public void setTrains(List<Train> trains) {
+        this.trains = trains;
     }
 
     public Position getPosition() {
@@ -144,6 +163,8 @@ public class Staff implements Serializable{
                 ", education='" + education + '\'' +
                 ", certificate='" + certificate + '\'' +
                 ", position=" + position +
+                ", remark='" + remark + '\'' +
+                ", trains=" + trains +
                 '}';
     }
 }

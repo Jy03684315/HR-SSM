@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.show.dao.TrainMapper">
+    <resultMap id="trainMap" type="train">
+        <id property="id" column="TR_ID"/>
+        <result property="theme" column="TR_THEME"/>
+        <result property="content" column="TR_CONTENT"/>
+        <result property="begin" column="TR_BEGIN"/>
+        <result property="end" column="TR_END"/>
+        <result property="state" column="TR_STATE"/>
+        <result property="time" column="TR_TIME"/>
+    </resultMap>
+    <insert id="addTrain">
+        <selectKey resultType="integer" order="BEFORE" keyProperty="id">
+            SELECT SEQ_T_TRAIN.nextval FROM DUAL
+        </selectKey>
+        INSERT INTO T_TRAIN(TR_ID, TR_THEME, TR_CONTENT, TR_BEGIN, TR_END, TR_STATE, TR_TIME)
+        VALUES(#{id},#{theme},#{content},#{begin},#{end},#{state},#{time})
+    </insert>
+    <update id="changeState">
+        UPDATE T_TRAIN SET TR_STATE=#{state} WHERE TR_ID=#{id}
+    </update>
+    <update id="updateTrain">
+        UPDATE T_TRAIN SET TR_THEME=#{theme},TR_CONTENT=#{content},TR_BEGIN=#{begin},TR_END=#{end} WHERE TR_ID=#{id}
+    </update>
+    <select id="getTrainByState" resultMap="trainMap">
+        SELECT * FROM T_TRAIN WHERE TR_STATE=#{state}
+    </select>
+    <select id="getTrainById" resultMap="trainMap">
+        SELECT * FROM T_TRAIN WHERE TR_ID=#{id}
+    </select>
+</mapper>

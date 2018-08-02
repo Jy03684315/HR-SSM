@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Show
-  Date: 2018/7/30
-  Time: 11:16
+  Date: 2018/8/2
+  Time: 13:30
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -15,6 +15,11 @@
     <base href="<%=basePath%>"/>
     <title></title>
     <style>
+        td{
+            width: 200px;
+            height: 30px;
+            text-align: center;
+        }
         h1{
             background-color: lightskyblue;
             margin: 0 auto;
@@ -23,18 +28,13 @@
     </style>
 </head>
 <body>
-<h1>管理员控制台</h1>
-<a href="toAddRecruit">添加招聘信息</a>
-<a href="noRelease">未发布招聘信息</a>
-<a href="isRelease">已发布招聘信息</a>
-<a href="unRead">未读面试申请</a>
-<a href="isRead">已读面试申请</a>
-<a href="forReply">待回复面试申请</a>
-<a href="employment">待录用面试申请</a><br>
-<a href="listDepartment">部门职位管理</a>
-<a href="staffManage">员工管理</a>
-<form action="ret" method="post">
-    <input type="submit" name="返回" value="注销"/>
-</form>
+<h1>员工管理</h1>
+<a href="">查看试用期员工</a>
+<a href="">查看在职员工</a>
+<a href="">查看离职员工</a><br/>
+<h3>员工培训</h3>
+<a href="addTrain">新增培训</a>
+<a href="offTrain">查看未发布培训</a>
+<a href="onTrain">查看已发布培训</a>
 </body>
 </html>

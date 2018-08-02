@@ -30,4 +30,8 @@ public class StaffController {
         staffService.addStaff(staff1);
         return "managerConsole";
     }
+    @RequestMapping("/staffManage")
+    public String staffManage(){
+        return "staffManage";
+    }
 }

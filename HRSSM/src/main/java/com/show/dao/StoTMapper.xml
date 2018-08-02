@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.show.dao.StoTMapper">
+    <resultMap id="stoTMap" type="stoT">
+        <id property="id" column="ST_ID"/>
+        <association property="staff" javaType="staff">
+            <id property="id" column="S_ID"/>
+        </association>
+        <association property="train" javaType="train">
+            <id property="id" column="TR_ID"/>
+        </association>
+    </resultMap>
+    <insert id="addStoT">
+        INSERT INTO T_STOT(ST_ID, ST_SID, ST_TID) VALUES (SEQ_T_STOT.nextval,#{staff.id},#{train.id})
+    </insert>
+</mapper>

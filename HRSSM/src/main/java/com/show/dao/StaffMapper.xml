@@ -14,6 +14,7 @@
         <result property="graduation" column="S_GRADUATION"/>
         <result property="education" column="S_EDUCATION"/>
         <result property="certificate" column="S_CERTIFICATE"/>
+        <result property="remark" column="S_REMARKS"/>
         <association property="position" javaType="position">
             <id property="id" column="P_ID"/>
             <result property="name" column="P_NAME"/>
@@ -31,4 +32,7 @@
         VALUES (SEQ_T_STAFF.nextval,#{name},#{pass},#{position.id},#{state},#{date},#{sName},#{sex},#{idCard},#{birth},
         #{graduation},#{education},#{certificate})
     </insert>
+    <select id="getStaffD" resultMap="staffMap">
+        SELECT * FROM T_STAFF s,T_POSITION p,T_DEPARTMENT d WHERE s.S_PID=p.P_ID AND p.P_DID=d.D_ID
+    </select>
 </mapper>

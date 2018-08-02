@@ -59,6 +59,13 @@ public class PositionController {
         model.addAttribute("positions",positions);
         return "doPosition";
     }
+    @RequestMapping("/doPositionFail")
+    public String doPositionFail(Model model){
+        List<Position> positions=positionService.positionListWD();
+        model.addAttribute("positions",positions);
+        model.addAttribute("fail","该职位下有职员或招聘信息，无法删除");
+        return "doPosition";
+    }
     @RequestMapping("/toUpdatePosition")
     public String toUpdatePosition(Position position, Model model){
         Position position1=positionService.getPositionById(position);
@@ -72,6 +79,14 @@ public class PositionController {
     }
     @RequestMapping("/deletePosition")
     public String deletePosition(Position position,Model model){
+        Position position1=positionService.getPositionByIdS(position);
+        Position position2=positionService.getPositionByIdR(position);
+        if (position1!=null){
+            return doPositionFail(model);
+        }
+        if (position2!=null){
+            return doPositionFail(model);
+        }
         positionService.deletePositionById(position);
         return doPosition(model);
     }
