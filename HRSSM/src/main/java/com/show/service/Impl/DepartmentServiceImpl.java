@@ -51,4 +51,8 @@ public class DepartmentServiceImpl implements DepartmentService{
     public void deleteDp(Department department) {
         departmentMapper.deleteDp(department);
     }
+
+    public List<Department> getDpPS() {
+        return departmentMapper.getDpPS();
+    }
 }

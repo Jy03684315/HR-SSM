@@ -52,4 +52,7 @@
     <select id="getDpByIdALLS" resultMap="departmentMap">
         SELECT * FROM T_DEPARTMENT d,T_POSITION p,T_STAFF s WHERE d.D_ID=p.P_DID AND p.P_ID=s.S_PID AND d.D_ID=#{id}
     </select>
+    <select id="getDpPS" resultMap="departmentMap">
+        SELECT * FROM T_DEPARTMENT d,T_POSITION p,T_STAFF s WHERE d.D_ID=p.P_DID AND p.P_ID=s.S_PID
+    </select>
 </mapper>

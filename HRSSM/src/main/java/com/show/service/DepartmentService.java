@@ -17,4 +17,5 @@ public interface DepartmentService {
     void updateDp(Department department);
     Department getDpByIdALLS(Department department);
     void deleteDp(Department department);
+    List<Department> getDpPS();
 }

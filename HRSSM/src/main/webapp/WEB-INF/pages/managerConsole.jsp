@@ -33,6 +33,7 @@
 <a href="employment">待录用面试申请</a><br>
 <a href="listDepartment">部门职位管理</a>
 <a href="staffManage">员工管理</a>
+<a href="rewardManage">奖惩管理</a>
 <form action="ret" method="post">
     <input type="submit" name="返回" value="注销"/>
 </form>

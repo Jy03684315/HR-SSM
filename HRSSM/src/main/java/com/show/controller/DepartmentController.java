@@ -38,8 +38,14 @@ public class DepartmentController {
         return "listDepartment";
     }
     @RequestMapping("/positionsInD")
-    public @ResponseBody List<Position> positionsInD(Department department,HttpSession session){
+    public @ResponseBody List<Position> positionsInD(Department department){
         Department department1=departmentService.getDpById(department);
+        List<Position> positions=department1.getPositions();
+        return positions;
+    }
+    @RequestMapping("/sPositionsInD")
+    public @ResponseBody List<Position> sPositionsInD(Department department){
+        Department department1=departmentService.getDpByIdALLS(department);
         List<Position> positions=department1.getPositions();
         return positions;
     }

@@ -19,4 +19,5 @@ public interface DepartmentMapper {
     void updateDp(Department department);
     void deleteDp(Department department);
     Department getDpByIdALLS(Department department);
+    List<Department> getDpPS();
 }
