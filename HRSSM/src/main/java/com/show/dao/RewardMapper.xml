@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.show.dao.RewardMapper">
+    <resultMap id="rewardMap" type="reward">
+        <id property="id" column="RW_ID"/>
+        <result property="date" column="RW_DATE"/>
+        <result property="money" column="RW_MONEY"/>
+        <result property="explain" column="RW_EXPLAIN"/>
+        <association property="staff" javaType="staff">
+            <id property="id" column="S_ID"/>
+            <result property="name" column="S_NAME"/>
+            <result property="pass" column="S_PASS"/>
+            <result property="state" column="S_STATE"/>
+            <result property="date" column="S_DATE"/>
+            <result property="sName" column="S_SNAME"/>
+            <result property="sex" column="S_SEX"/>
+            <result property="idCard" column="S_IDCARD"/>
+            <result property="birth" column="S_BIRTH"/>
+            <result property="graduation" column="S_GRADUATION"/>
+            <result property="education" column="S_EDUCATION"/>
+            <result property="certificate" column="S_CERTIFICATE"/>
+            <result property="remark" column="S_REMARKS"/>
+        </association>
+    </resultMap>
+    <insert id="addReward">
+        INSERT INTO T_REWARD(RW_ID, RW_DATE, RW_MONEY, RW_SID, RW_EXPLAIN)
+        VALUES (SEQ_T_REWARD.nextval,#{date},#{money},#{staff.id},#{explain})
+    </insert>
+    <update id="updateReward">
+        UPDATE T_REWARD SET RW_MONEY=#{money},RW_EXPLAIN=#{explain} WHERE RW_ID=#{id}
+    </update>
+    <delete id="deleteReward">
+        DELETE FROM T_REWARD WHERE RW_ID=#{id}
+    </delete>
+    <select id="getReward" resultMap="rewardMap">
+        SELECT * FROM T_REWARD r,T_STAFF s WHERE r.RW_SID=s.S_ID
+    </select>
+    <select id="getRewardByPage" resultMap="rewardMap">
+        SELECT * FROM
+        (SELECT rownum rn,r.*,s.*FROM T_REWARD r,T_STAFF s
+        WHERE r.RW_SID=s.S_ID)A
+        WHERE A.rn between #{0} and #{1}
+    </select>
+    <select id="getRewardById" resultMap="rewardMap">
+        SELECT * FROM T_REWARD WHERE RW_ID=#{id}
+    </select>
+</mapper>
