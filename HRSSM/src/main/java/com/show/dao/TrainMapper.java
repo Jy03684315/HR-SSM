@@ -16,4 +16,5 @@ public interface TrainMapper {
     Train getTrainById(Train train);
     void updateTrain(Train train);
     List<Train> getTrainByStateStaff(int state,int sid);
+    List<Train> getTrainByStateStaffPage(int state,int sid,int begin,int end);
 }

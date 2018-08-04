@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.show.dao.AttendanceMapper">
+    <resultMap id="attendanceMap" type="attendance">
+        <id property="id" column="A_ID"/>
+        <result property="onTime" column="A_ON"/>
+        <result property="offTime" column="A_OFF"/>
+        <result property="month" column="A_MONTH"/>
+        <result property="day" column="A_DAY"/>
+        <association property="staff" javaType="staff">
+            <id property="id" column="S_ID"/>
+            <result property="name" column="S_NAME"/>
+            <result property="pass" column="S_PASS"/>
+            <result property="state" column="S_STATE"/>
+            <result property="date" column="S_DATE"/>
+            <result property="sName" column="S_SNAME"/>
+            <result property="sex" column="S_SEX"/>
+            <result property="idCard" column="S_IDCARD"/>
+            <result property="birth" column="S_BIRTH"/>
+            <result property="graduation" column="S_GRADUATION"/>
+            <result property="education" column="S_EDUCATION"/>
+            <result property="certificate" column="S_CERTIFICATE"/>
+            <result property="remark" column="S_REMARKS"/>
+        </association>
+    </resultMap>
+    <insert id="addOn">
+        INSERT INTO T_ATTENDANCE(A_ID, A_SID, A_ON, A_MONTH, A_DAY)
+        VALUES (SEQ_T_ATTENDANCE.nextval,#{staff.id},#{onTime},#{month},#{day} )
+    </insert>
+    <update id="addOff">
+        UPDATE T_ATTENDANCE SET T_ATTENDANCE.A_OFF=#{offTime} WHERE T_ATTENDANCE.A_ID=#{id}
+    </update>
+    <select id="getOnNow" resultMap="attendanceMap">
+        SELECT * FROM T_ATTENDANCE a,T_STAFF s
+        WHERE a.A_SID=s.S_ID AND s.S_ID=#{0} AND a.A_MONTH=#{1} AND a.A_DAY=#{2}
+    </select>
+</mapper>

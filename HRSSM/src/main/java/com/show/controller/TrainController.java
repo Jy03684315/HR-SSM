@@ -5,9 +5,11 @@ import com.show.service.DepartmentService;
 import com.show.service.StaffService;
 import com.show.service.StoTService;
 import com.show.service.TrainService;
+import com.show.utils.DoPage;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -147,10 +149,18 @@ public class TrainController {
         return onTrain(model);
     }
     @RequestMapping("/trainNotice")
-    public String trainNotice(HttpSession session){
+    public String trainNotice(@RequestParam(value = "currentPage",defaultValue = "1")int currentPage, Model model,HttpSession session){
         Staff staff= (Staff) session.getAttribute("s");
         int state=1;
         List<Train> trains=trainService.getTrainByStateStaff(state,staff.getId());
+        int totalNum=trains.size();
+        int pageSize=5;
+        int totalPages= DoPage.getTotalPages(totalNum);
+        int begin = (currentPage-1)*pageSize+1;
+        int end = (currentPage-1)*pageSize+pageSize;
+        List<Train> trains1=trainService.getTrainByStateStaffPage(state,staff.getId(),begin,end);
+        model.addAttribute("totalPages",totalPages);
+        model.addAttribute("trains",trains1);
         return "trainNotice";
     }
 }

@@ -72,6 +72,10 @@ public class StaffController {
         session.setAttribute("s",staff1);
         return "staffConsole";
     }
+    @RequestMapping("/toStaffConsole")
+    public String toStaffConsole(){
+        return "staffConsole";
+    }
     @RequestMapping("/dpsForS")
     public String dpsForS(Model model){
         List<Department> departments=departmentService.getDpAll();
