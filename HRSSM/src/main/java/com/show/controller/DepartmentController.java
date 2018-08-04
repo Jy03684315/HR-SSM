@@ -40,6 +40,14 @@ public class DepartmentController {
     @RequestMapping("/positionsInD")
     public @ResponseBody List<Position> positionsInD(Department department){
         Department department1=departmentService.getDpById(department);
+        if (department1==null){
+            List<Position> positions=new ArrayList<Position>();
+            Position position=new Position();
+            position.setId(0);
+            position.setName("该部门没职位");
+            positions.add(position);
+            return positions;
+        }
         List<Position> positions=department1.getPositions();
         return positions;
     }

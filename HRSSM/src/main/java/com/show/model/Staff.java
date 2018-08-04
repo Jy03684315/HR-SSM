@@ -23,8 +23,26 @@ public class Staff implements Serializable{
     private Position position;//Ö°Î»
     private String remark;//±¸×¢
     private List<Train> trains;//ÅàÑµ
+    private List<Reward> rewards;//½±³Í
+    private List<Attendance> attendances;//¿¼ÇÚ
 
     public Staff() {
+    }
+
+    public List<Reward> getRewards() {
+        return rewards;
+    }
+
+    public void setRewards(List<Reward> rewards) {
+        this.rewards = rewards;
+    }
+
+    public List<Attendance> getAttendances() {
+        return attendances;
+    }
+
+    public void setAttendances(List<Attendance> attendances) {
+        this.attendances = attendances;
     }
 
     public String getRemark() {
@@ -165,6 +183,8 @@ public class Staff implements Serializable{
                 ", position=" + position +
                 ", remark='" + remark + '\'' +
                 ", trains=" + trains +
+                ", rewards=" + rewards +
+                ", attendances=" + attendances +
                 '}';
     }
 }

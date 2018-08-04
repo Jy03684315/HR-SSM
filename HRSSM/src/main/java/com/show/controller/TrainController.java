@@ -146,4 +146,11 @@ public class TrainController {
         trainService.changeState(train);
         return onTrain(model);
     }
+    @RequestMapping("/trainNotice")
+    public String trainNotice(HttpSession session){
+        Staff staff= (Staff) session.getAttribute("s");
+        int state=1;
+        List<Train> trains=trainService.getTrainByStateStaff(state,staff.getId());
+        return "trainNotice";
+    }
 }

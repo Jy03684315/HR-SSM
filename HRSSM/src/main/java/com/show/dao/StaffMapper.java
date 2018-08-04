@@ -12,4 +12,5 @@ import java.util.List;
 public interface StaffMapper {
     void addStaff(Staff staff);
     List<Staff> getStaffD();
+    Staff getStaffByNamePass(Staff staff);
 }

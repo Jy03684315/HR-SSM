@@ -29,4 +29,7 @@
     <select id="getTrainById" resultMap="trainMap">
         SELECT * FROM T_TRAIN WHERE TR_ID=#{id}
     </select>
+    <select id="getTrainByStateStaff" resultMap="trainMap">
+        SELECT t.* FROM T_TRAIN t,T_STOT st WHERE t.TR_ID=st.ST_TID AND t.TR_STATE=#{0} AND st.ST_SID=#{1}
+    </select>
 </mapper>

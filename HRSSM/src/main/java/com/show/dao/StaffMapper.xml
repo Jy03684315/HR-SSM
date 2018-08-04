@@ -35,4 +35,8 @@
     <select id="getStaffD" resultMap="staffMap">
         SELECT * FROM T_STAFF s,T_POSITION p,T_DEPARTMENT d WHERE s.S_PID=p.P_ID AND p.P_DID=d.D_ID
     </select>
+    <select id="getStaffByNamePass" resultMap="staffMap">
+        SELECT * FROM T_STAFF s,T_POSITION p,T_DEPARTMENT d
+        WHERE s.S_PID=p.P_ID AND p.P_DID=d.D_ID AND s.S_NAME=#{name} AND s.S_PASS=#{pass}
+    </select>
 </mapper>

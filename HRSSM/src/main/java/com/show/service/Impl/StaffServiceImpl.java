@@ -23,4 +23,8 @@ public class StaffServiceImpl implements StaffService{
     public List<Staff> getStaffD() {
         return staffMapper.getStaffD();
     }
+
+    public Staff getStaffByNamePass(Staff staff) {
+        return staffMapper.getStaffByNamePass(staff);
+    }
 }

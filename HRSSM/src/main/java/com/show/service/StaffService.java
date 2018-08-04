@@ -10,4 +10,5 @@ import java.util.List;
 public interface StaffService {
     void addStaff(Staff staff);
     List<Staff> getStaffD();
+    Staff getStaffByNamePass(Staff staff);
 }

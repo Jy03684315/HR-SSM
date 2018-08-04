@@ -47,6 +47,9 @@
 <form action="toMLogin" method="post" style="margin:0;display:inline;">
     <input id="mLogin" type="submit" value="管理员登录">
 </form>
+<form action="toSLogin" method="post" style="margin:0;display:inline;">
+    <input id="sLogin" type="submit" value="员工登录">
+</form>
 <% }else{ %>
 <span>欢迎${sessionScope.get("u").getName()}</span>
 <form action="CvList" style="margin:0;display:inline;">

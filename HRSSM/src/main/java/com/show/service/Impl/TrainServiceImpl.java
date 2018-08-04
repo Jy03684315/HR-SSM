@@ -35,4 +35,9 @@ public class TrainServiceImpl implements TrainService{
     public void updateTrain(Train train) {
         trainMapper.updateTrain(train);
     }
+
+    public List<Train> getTrainByStateStaff(int state, int sid) {
+        return trainMapper.getTrainByStateStaff(state,sid);
+    }
+
 }
