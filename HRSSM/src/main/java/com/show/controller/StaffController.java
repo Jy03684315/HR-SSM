@@ -8,14 +8,16 @@ import com.show.service.DepartmentService;
 import com.show.service.InterviewService;
 import com.show.service.PositionService;
 import com.show.service.StaffService;
-import javafx.geometry.Pos;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -84,7 +86,6 @@ public class StaffController {
     }
     @RequestMapping("/selectS1")
     public String selectS1(String selectP, HttpSession session){
-        System.out.println(selectP);
         int pid= Integer.parseInt(selectP);
         if (pid==0){
             return "forward:dpsForS";
@@ -98,5 +99,119 @@ public class StaffController {
         List<Staff> staff=position1.getStaff();
         session.setAttribute("staff",staff);
         return "forward:dpsForS";
+    }
+    @RequestMapping("/toUpdateSDetail")
+    public String toUpdateSDetail(){
+        return "updateSDetail";
+    }
+    @RequestMapping("/updateSDetail")
+    public String updateSDetail(HttpSession session,Staff staff,String sBirth) throws ParseException {
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        Date birth = df.parse(sBirth);
+        staff.setBirth(birth);
+        staffService.updateStaff(staff);
+        Staff staff1= (Staff) session.getAttribute("s");
+        staff1.setsName(staff.getsName());
+        staff1.setSex(staff.getSex());
+        staff1.setBirth(staff.getBirth());
+        staff1.setIdCard(staff.getIdCard());
+        staff1.setGraduation(staff.getGraduation());
+        staff1.setEducation(staff.getEducation());
+        staff1.setCertificate(staff.getCertificate());
+        session.setAttribute("s",staff1);
+        return toStaffConsole();
+    }
+    @RequestMapping("/probation")
+    public String probation(Model model){
+        int state=1;
+        List<Department> departments=departmentService.getDpPS();
+        model.addAttribute("departments",departments);
+        model.addAttribute("state",state);
+        return "doStaff";
+    }
+    @RequestMapping("/onJob")
+    public String onJob(Model model){
+        int state=2;
+        List<Department> departments=departmentService.getDpPS();
+        model.addAttribute("departments",departments);
+        model.addAttribute("state",state);
+        return "doStaff";
+    }
+    @RequestMapping("/leaveJob")
+    public String leaveJob(Model model){
+        int state=3;
+        List<Department> departments=departmentService.getDpPS();
+        model.addAttribute("departments",departments);
+        model.addAttribute("state",state);
+        return "doStaff";
+    }
+    @RequestMapping("/doProbation")
+    public String doProbation(String selectP,Model model){
+        int pid= Integer.parseInt(selectP);
+        Position position=new Position(pid);
+        Position position1=positionService.getPositionByIdS(position);
+        List<Staff> staff=position1.getStaff();
+        for (int i=0;i<staff.size();i++){
+            if (staff.get(i).getState()!=1){
+                staff.remove(staff.get(i));
+            }
+        }
+        int state=1;
+        model.addAttribute("state",state);
+        model.addAttribute("staff",staff);
+        return "doStaffList";
+    }
+    @RequestMapping("/sDetailByM")
+    public String sDetailByM(Staff staff,Model model){
+        Staff staff1=staffService.getStaffById(staff);
+        model.addAttribute("s",staff1);
+        return "sDetailByM";
+    }
+    @RequestMapping("/toLeave")
+    public String toLeave(Staff staff,Model model){
+        model.addAttribute("s",staff);
+        return "toLeave";
+    }
+    @RequestMapping("/leave")
+    public String leave(Staff staff){
+        staff.setState(3);
+        staffService.toLeave(staff);
+        return staffManage();
+    }
+    @RequestMapping("/doOnJob")
+    public String doOnJob(String selectP,Model model){
+        int pid= Integer.parseInt(selectP);
+        Position position=new Position(pid);
+        Position position1=positionService.getPositionByIdS(position);
+        List<Staff> staff=position1.getStaff();
+        for (int i=0;i<staff.size();i++){
+            if (staff.get(i).getState()!=2){
+                staff.remove(staff.get(i));
+            }
+        }
+        int state=2;
+        model.addAttribute("state",state);
+        model.addAttribute("staff",staff);
+        return "doStaffList";
+    }
+    @RequestMapping("/doLeaveJob")
+    public String doLeaveJob(String selectP,Model model){
+        int pid= Integer.parseInt(selectP);
+        Position position=new Position(pid);
+        Position position1=positionService.getPositionByIdS(position);
+        if (position1==null){
+            model.addAttribute("fail","没有员工");
+            return "staffManage";
+        }
+        List<Staff> staff=position1.getStaff();
+        for (int i=0;i<staff.size();i++){
+            if (staff.get(i).getState()!=3){
+                staff.remove(staff.get(i));
+            }
+        }
+        int state=3;
+        model.addAttribute("state",state);
+        model.addAttribute("staff",staff);
+        return "doStaffList";
     }
 }

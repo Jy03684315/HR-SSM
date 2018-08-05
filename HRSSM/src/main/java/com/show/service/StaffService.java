@@ -11,4 +11,7 @@ public interface StaffService {
     void addStaff(Staff staff);
     List<Staff> getStaffD();
     Staff getStaffByNamePass(Staff staff);
+    void updateStaff(Staff staff);
+    Staff getStaffById(Staff staff);
+    void toLeave(Staff staff);
 }

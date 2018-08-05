@@ -27,4 +27,16 @@ public class StaffServiceImpl implements StaffService{
     public Staff getStaffByNamePass(Staff staff) {
         return staffMapper.getStaffByNamePass(staff);
     }
+
+    public void updateStaff(Staff staff) {
+        staffMapper.updateStaff(staff);
+    }
+
+    public Staff getStaffById(Staff staff) {
+        return staffMapper.getStaffById(staff);
+    }
+
+    public void toLeave(Staff staff) {
+        staffMapper.toLeave(staff);
+    }
 }

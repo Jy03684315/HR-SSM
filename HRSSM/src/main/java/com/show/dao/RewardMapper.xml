@@ -44,4 +44,7 @@
     <select id="getRewardById" resultMap="rewardMap">
         SELECT * FROM T_REWARD WHERE RW_ID=#{id}
     </select>
+    <select id="getRewardByStaff" resultMap="rewardMap">
+        SELECT * FROM T_REWARD WHERE RW_SID=#{id}
+    </select>
 </mapper>

@@ -1,6 +1,7 @@
 package com.show.service;
 
 import com.show.model.Reward;
+import com.show.model.Staff;
 
 import java.util.List;
 
@@ -14,4 +15,5 @@ public interface RewardService {
     void deleteReward(Reward reward);
     Reward getRewardById(Reward reward);
     void updateReward(Reward reward);
+    List<Reward> getRewardByStaff(Staff staff);
 }

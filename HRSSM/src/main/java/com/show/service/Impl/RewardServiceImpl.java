@@ -2,6 +2,7 @@ package com.show.service.Impl;
 
 import com.show.dao.RewardMapper;
 import com.show.model.Reward;
+import com.show.model.Staff;
 import com.show.service.RewardService;
 import org.springframework.stereotype.Service;
 
@@ -38,5 +39,9 @@ public class RewardServiceImpl implements RewardService{
 
     public void updateReward(Reward reward) {
         rewardMapper.updateReward(reward);
+    }
+
+    public List<Reward> getRewardByStaff(Staff staff) {
+        return rewardMapper.getRewardByStaff(staff);
     }
 }

@@ -1,5 +1,6 @@
 package com.show.dao;
 
+import com.show.model.Staff;
 import com.show.model.Train;
 import org.springframework.stereotype.Repository;
 
@@ -17,4 +18,6 @@ public interface TrainMapper {
     void updateTrain(Train train);
     List<Train> getTrainByStateStaff(int state,int sid);
     List<Train> getTrainByStateStaffPage(int state,int sid,int begin,int end);
+    List<Train> getTrainByStaff(Staff staff);
+    List<Train> getTrainByStaffPage(int sid,int begin,int end);
 }

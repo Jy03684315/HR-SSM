@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -75,5 +77,22 @@ public class RewardController {
     public String updateReward(@RequestParam(value = "currentPage",defaultValue = "1")int currentPage,Model model,Reward reward){
         rewardService.updateReward(reward);
         return getReward(currentPage,model);
+    }
+    @RequestMapping("/rewardInS")
+    public String rewardInS(@RequestParam(value = "month",defaultValue = "0")int month,HttpSession session,Model model){
+        Staff staff= (Staff) session.getAttribute("s");
+        List<Reward> rewards=rewardService.getRewardByStaff(staff);
+        Calendar calendar=Calendar.getInstance();
+        if (month==0){
+            month=calendar.get(Calendar.MONTH)+1;
+        }
+        List<Reward> rewards1=new ArrayList<Reward>();
+        for (Reward reward:rewards) {
+            if ((reward.getDate().getMonth()+1)==month){
+                rewards1.add(reward);
+            }
+        }
+        model.addAttribute("rewards",rewards1);
+        return "rewardInS";
     }
 }

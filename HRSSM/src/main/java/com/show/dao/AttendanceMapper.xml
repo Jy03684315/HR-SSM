@@ -34,4 +34,16 @@
         SELECT * FROM T_ATTENDANCE a,T_STAFF s
         WHERE a.A_SID=s.S_ID AND s.S_ID=#{0} AND a.A_MONTH=#{1} AND a.A_DAY=#{2}
     </select>
+    <select id="getAByStaff" resultMap="attendanceMap">
+        SELECT * FROM T_ATTENDANCE WHERE T_ATTENDANCE.A_SID=#{id}
+    </select>
+    <select id="getAByStaffMonth" resultMap="attendanceMap">
+        SELECT * FROM T_ATTENDANCE WHERE T_ATTENDANCE.A_SID=#{0} AND T_ATTENDANCE.A_MONTH=#{1}
+    </select>
+    <select id="getAByStaffPage" resultMap="attendanceMap">
+        SELECT * FROM
+        (SELECT rownum rn,a.* FROM T_ATTENDANCE a
+        WHERE a.A_SID=#{0})A
+        WHERE A.rn between #{1} and #{2}
+    </select>
 </mapper>

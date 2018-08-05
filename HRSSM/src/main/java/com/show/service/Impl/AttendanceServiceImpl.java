@@ -7,6 +7,7 @@ import com.show.service.AttendanceService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by Show on 2018/8/4.
@@ -26,6 +27,18 @@ public class AttendanceServiceImpl implements AttendanceService{
 
     public void addOff(Attendance attendance) {
         attendanceMapper.addOff(attendance);
+    }
+
+    public List<Attendance> getAByStaff(Staff staff) {
+        return attendanceMapper.getAByStaff(staff);
+    }
+
+    public List<Attendance> getAByStaffMonth(int sid, int month) {
+        return attendanceMapper.getAByStaffMonth(sid,month);
+    }
+
+    public List<Attendance> getAByStaffPage(int sid, int begin, int end) {
+        return attendanceMapper.getAByStaffPage(sid,begin,end);
     }
 
 

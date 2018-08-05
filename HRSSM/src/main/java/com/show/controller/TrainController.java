@@ -163,4 +163,23 @@ public class TrainController {
         model.addAttribute("trains",trains1);
         return "trainNotice";
     }
+    @RequestMapping("/toSTrainByM")
+    public String toSTrainByM(@RequestParam(value = "currentPage",defaultValue = "1")int currentPage, Model model,Staff staff,HttpSession session){
+        session.setAttribute("s",staff);
+        return sTrainByM(currentPage,session,model);
+    }
+    @RequestMapping("/sTrainByM")
+    public String sTrainByM(@RequestParam(value = "currentPage",defaultValue = "1")int currentPage,HttpSession session, Model model){
+        Staff staff= (Staff) session.getAttribute("s");
+        List<Train> trains=trainService.getTrainByStaff(staff);
+        int totalNum=trains.size();
+        int pageSize=5;
+        int totalPages= DoPage.getTotalPages(totalNum);
+        int begin = (currentPage-1)*pageSize+1;
+        int end = (currentPage-1)*pageSize+pageSize;
+        List<Train> trains1=trainService.getTrainByStaffPage(staff.getId(),begin,end);
+        model.addAttribute("totalPages",totalPages);
+        model.addAttribute("trains",trains1);
+        return "sTrainByM";
+    }
 }

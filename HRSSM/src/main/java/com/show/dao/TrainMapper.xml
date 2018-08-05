@@ -38,4 +38,13 @@
         WHERE t.TR_ID=st.ST_TID AND t.TR_STATE=#{0} AND st.ST_SID=#{1})A
         WHERE A.rn between #{2} and #{3}
     </select>
+    <select id="getTrainByStaff" resultMap="trainMap">
+        SELECT t.* FROM T_TRAIN t,T_STOT st WHERE t.TR_ID=st.ST_TID AND st.ST_SID=#{id}
+    </select>
+    <select id="getTrainByStaffPage" resultMap="trainMap">
+        SELECT * FROM
+        (SELECT rownum rn,t.* FROM T_TRAIN t,T_STOT st
+        WHERE t.TR_ID=st.ST_TID AND st.ST_SID=#{0})A
+        WHERE A.rn between #{1} and #{2}
+    </select>
 </mapper>

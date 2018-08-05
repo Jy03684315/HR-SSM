@@ -14,7 +14,7 @@
         <result property="graduation" column="S_GRADUATION"/>
         <result property="education" column="S_EDUCATION"/>
         <result property="certificate" column="S_CERTIFICATE"/>
-        <result property="remark" column="S_REMARKS"/>
+        <result property="remark" column="S_REMARK"/>
         <association property="position" javaType="position">
             <id property="id" column="P_ID"/>
             <result property="name" column="P_NAME"/>
@@ -32,11 +32,23 @@
         VALUES (SEQ_T_STAFF.nextval,#{name},#{pass},#{position.id},#{state},#{date},#{sName},#{sex},#{idCard},#{birth},
         #{graduation},#{education},#{certificate})
     </insert>
+    <update id="updateStaff">
+        UPDATE T_STAFF SET S_SNAME=#{sName},S_SEX=#{sex},S_IDCARD=#{idCard},S_BIRTH=#{birth},
+        S_GRADUATION=#{graduation},S_EDUCATION=#{education},S_CERTIFICATE=#{certificate}
+        WHERE S_ID=#{id}
+    </update>
+    <update id="toLeave">
+        UPDATE T_STAFF SET S_STATE=#{state},S_EXPLAIN=#{explain}
+        WHERE S_ID=#{id}
+    </update>
     <select id="getStaffD" resultMap="staffMap">
         SELECT * FROM T_STAFF s,T_POSITION p,T_DEPARTMENT d WHERE s.S_PID=p.P_ID AND p.P_DID=d.D_ID
     </select>
     <select id="getStaffByNamePass" resultMap="staffMap">
         SELECT * FROM T_STAFF s,T_POSITION p,T_DEPARTMENT d
         WHERE s.S_PID=p.P_ID AND p.P_DID=d.D_ID AND s.S_NAME=#{name} AND s.S_PASS=#{pass}
+    </select>
+    <select id="getStaffById" resultMap="staffMap">
+        SELECT * FROM T_STAFF WHERE T_STAFF.S_ID=#{id}
     </select>
 </mapper>

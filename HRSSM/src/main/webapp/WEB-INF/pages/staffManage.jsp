@@ -29,12 +29,13 @@
 </head>
 <body>
 <h1>员工管理</h1>
-<a href="">查看试用期员工</a>
-<a href="">查看在职员工</a>
-<a href="">查看离职员工</a><br/>
+<a href="probation">查看试用期员工</a>
+<a href="onJob">查看在职员工</a>
+<a href="leaveJob">查看离职员工</a><br/>
 <h3>员工培训</h3>
 <a href="addTrain">新增培训</a>
 <a href="offTrain">查看未发布培训</a>
-<a href="onTrain">查看已发布培训</a>
+<a href="onTrain">查看已发布培训</a><br/>
+${fail}
 </body>
 </html>

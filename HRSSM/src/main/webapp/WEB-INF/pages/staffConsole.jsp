@@ -34,8 +34,11 @@ ${sOn}
 </form>
 ${noOn}
 ${sOff}
-<a href="dpsForS">查看部门职位员工</a>
-<a href="trainNotice">培训通知</a>
+<a href="toUpdateSDetail">个人信息查询及修改</a>
+<a href="dpsForS">查看部门职位员工</a><br/>
+<a href="trainNotice">培训通知</a><br/>
+<a href="rewardInS">查询奖惩信息</a><br/>
+<a href="attendanceInS">查询考勤</a><br/>
 <form action="ret" method="post">
     <input type="submit" name="返回" value="注销"/>
 </form>

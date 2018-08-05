@@ -21,7 +21,7 @@ public class Staff implements Serializable{
     private String education;//学历
     private String certificate;//证书
     private Position position;//职位
-    private String remark;//备注
+    private String explain;//解释
     private List<Train> trains;//培训
     private List<Reward> rewards;//奖惩
     private List<Attendance> attendances;//考勤
@@ -45,12 +45,12 @@ public class Staff implements Serializable{
         this.attendances = attendances;
     }
 
-    public String getRemark() {
-        return remark;
+    public String getExplain() {
+        return explain;
     }
 
-    public void setRemark(String remark) {
-        this.remark = remark;
+    public void setExplain(String explain) {
+        this.explain = explain;
     }
 
     public List<Train> getTrains() {
@@ -181,7 +181,7 @@ public class Staff implements Serializable{
                 ", education='" + education + '\'' +
                 ", certificate='" + certificate + '\'' +
                 ", position=" + position +
-                ", remark='" + remark + '\'' +
+                ", explain='" + explain + '\'' +
                 ", trains=" + trains +
                 ", rewards=" + rewards +
                 ", attendances=" + attendances +

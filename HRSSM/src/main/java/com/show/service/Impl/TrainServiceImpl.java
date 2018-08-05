@@ -1,6 +1,7 @@
 package com.show.service.Impl;
 
 import com.show.dao.TrainMapper;
+import com.show.model.Staff;
 import com.show.model.Train;
 import com.show.service.TrainService;
 import org.springframework.stereotype.Service;
@@ -42,6 +43,14 @@ public class TrainServiceImpl implements TrainService{
 
     public List<Train> getTrainByStateStaffPage(int state, int sid, int begin, int end) {
         return trainMapper.getTrainByStateStaffPage(state,sid,begin,end);
+    }
+
+    public List<Train> getTrainByStaff(Staff staff) {
+        return trainMapper.getTrainByStaff(staff);
+    }
+
+    public List<Train> getTrainByStaffPage(int sid, int begin, int end) {
+        return trainMapper.getTrainByStaffPage(sid,begin,end);
     }
 
 }
