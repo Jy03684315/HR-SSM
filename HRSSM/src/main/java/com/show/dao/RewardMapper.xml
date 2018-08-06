@@ -19,7 +19,7 @@
             <result property="graduation" column="S_GRADUATION"/>
             <result property="education" column="S_EDUCATION"/>
             <result property="certificate" column="S_CERTIFICATE"/>
-            <result property="remark" column="S_REMARKS"/>
+            <result property="explain" column="S_EXPLAIN"/>
         </association>
     </resultMap>
     <insert id="addReward">

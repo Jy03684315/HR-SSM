@@ -39,6 +39,7 @@ ${sOff}
 <a href="trainNotice">培训通知</a><br/>
 <a href="rewardInS">查询奖惩信息</a><br/>
 <a href="attendanceInS">查询考勤</a><br/>
+<a href="payInS">查看薪资</a>
 <form action="ret" method="post">
     <input type="submit" name="返回" value="注销"/>
 </form>

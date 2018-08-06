@@ -21,8 +21,8 @@ public class AttendanceServiceImpl implements AttendanceService{
         attendanceMapper.addOn(attendance);
     }
 
-    public Attendance getOnNow(int sid, int month, int day) {
-        return attendanceMapper.getOnNow(sid,month,day);
+    public Attendance getOnNow(int sid, int month, int day,int year) {
+        return attendanceMapper.getOnNow(sid,month,day,year);
     }
 
     public void addOff(Attendance attendance) {
@@ -33,12 +33,21 @@ public class AttendanceServiceImpl implements AttendanceService{
         return attendanceMapper.getAByStaff(staff);
     }
 
+
     public List<Attendance> getAByStaffMonth(int sid, int month) {
         return attendanceMapper.getAByStaffMonth(sid,month);
     }
 
     public List<Attendance> getAByStaffPage(int sid, int begin, int end) {
         return attendanceMapper.getAByStaffPage(sid,begin,end);
+    }
+
+    public int aSize(int sid, int month, int year) {
+        return attendanceMapper.aSize(sid,month,year);
+    }
+
+    public List<Attendance> getAByStaffDate(int sid, int month, int year) {
+        return attendanceMapper.getAByStaffDate(sid,month,year);
     }
 
 

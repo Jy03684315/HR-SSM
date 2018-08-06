@@ -39,4 +39,12 @@ public class StaffServiceImpl implements StaffService{
     public void toLeave(Staff staff) {
         staffMapper.toLeave(staff);
     }
+
+    public void changeState(Staff staff) {
+        staffMapper.changeState(staff);
+    }
+
+    public void changeP(int pid, int sid) {
+        staffMapper.changeP(pid,sid);
+    }
 }

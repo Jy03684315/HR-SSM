@@ -34,12 +34,14 @@
 <a href="listDepartment">部门职位管理</a>
 <a href="staffManage">员工管理</a>
 <a href="rewardManage">奖惩管理</a>
-<form action="">
+<a href="reconsiderationInM">员工薪资复议</a>
+<form action="accountA">
     <input type="submit" value="结算上月考勤">
 </form>
-<form action="">
+<form action="accountPay">
     <input type="submit" value="结算上月薪资">
 </form>
+${cannotPay}
 <form action="ret" method="post">
     <input type="submit" name="返回" value="注销"/>
 </form>

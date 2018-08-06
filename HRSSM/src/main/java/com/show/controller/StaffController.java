@@ -214,4 +214,39 @@ public class StaffController {
         model.addAttribute("staff",staff);
         return "doStaffList";
     }
+    @RequestMapping("/beFull")
+    public String beFull(Staff staff,Model model){
+        Staff staff1=staffService.getStaffById(staff);
+        Date date=staff1.getDate();
+        Date now=new Date();
+        long from=date.getTime();
+        long to=now.getTime();
+        int days= (int) ((to-from)/(1000*60*60*24));
+        if (days<30){
+            model.addAttribute("failBeFull","未满一个月，无法转正");
+            return "staffManage";
+        }
+        staff1.setState(2);
+        staffService.changeState(staff1);
+        return "staffManage";
+    }
+    @RequestMapping("/changing")
+    public String changing(Staff staff,HttpSession session,Model model){
+        Staff staff1=staffService.getStaffById(staff);
+        List<Department> departments=departmentService.getDpAll();
+        session.setAttribute("s",staff1);
+        model.addAttribute("departments",departments);
+        return "changing";
+    }
+    @RequestMapping("/doChanging")
+    public String doChanging(HttpSession session,String selectP,Model model){
+        int pid= Integer.parseInt(selectP);
+        if (pid==0){
+            model.addAttribute("failChanging","请正确选择部门职位");
+            return "staffManage";
+        }
+        Staff staff= (Staff) session.getAttribute("s");
+        staffService.changeP(pid,staff.getId());
+        return "staffManage";
+    }
 }

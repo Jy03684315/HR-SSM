@@ -51,4 +51,5 @@ public class PositionServiceImpl implements PositionService{
     public void updatePosition(Position position) {
         positionMapper.updatePosition(position);
     }
+
 }

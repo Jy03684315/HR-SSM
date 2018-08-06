@@ -41,6 +41,9 @@
         <th>薪资</th>
         <th>培训</th>
         <th>考勤</th>
+        <%if (state==1){%>
+        <th>转正</th>
+        <%}%>
         <%if (state!=3){%>
         <th>换岗</th>
         <th>离职</th>
@@ -58,7 +61,7 @@
             </form>
         </td>
         <td>
-            <form action="" method="post">
+            <form action="toSPayByM" method="post">
                 <input type="hidden" name="id" value="<%=staff1.getId()%>">
                 <input type="submit" value="查看">
             </form>
@@ -75,9 +78,17 @@
                 <input type="submit" value="查看">
             </form>
         </td>
+        <%if (state==1){%>
+        <td>
+            <form action="beFull" method="post">
+                <input type="hidden" name="id" value="<%=staff1.getId()%>">
+                <input type="submit" value="办理">
+            </form>
+        </td>
+        <%}%>
         <%if (state!=3){%>
         <td>
-            <form action="" method="post">
+            <form action="changing" method="post">
                 <input type="hidden" name="id" value="<%=staff1.getId()%>">
                 <input type="submit" value="办理">
             </form>

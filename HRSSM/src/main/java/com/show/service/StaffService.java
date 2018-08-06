@@ -14,4 +14,6 @@ public interface StaffService {
     void updateStaff(Staff staff);
     Staff getStaffById(Staff staff);
     void toLeave(Staff staff);
+    void changeState(Staff staff);
+    void changeP(int pid,int sid);
 }

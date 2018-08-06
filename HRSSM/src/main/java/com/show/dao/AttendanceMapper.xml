@@ -7,6 +7,7 @@
         <result property="offTime" column="A_OFF"/>
         <result property="month" column="A_MONTH"/>
         <result property="day" column="A_DAY"/>
+        <result property="year" column="A_YEAR"/>
         <association property="staff" javaType="staff">
             <id property="id" column="S_ID"/>
             <result property="name" column="S_NAME"/>
@@ -20,22 +21,22 @@
             <result property="graduation" column="S_GRADUATION"/>
             <result property="education" column="S_EDUCATION"/>
             <result property="certificate" column="S_CERTIFICATE"/>
-            <result property="remark" column="S_REMARKS"/>
+            <result property="explain" column="S_EXPLAIN"/>
         </association>
     </resultMap>
     <insert id="addOn">
-        INSERT INTO T_ATTENDANCE(A_ID, A_SID, A_ON, A_MONTH, A_DAY)
-        VALUES (SEQ_T_ATTENDANCE.nextval,#{staff.id},#{onTime},#{month},#{day} )
+        INSERT INTO T_ATTENDANCE(A_ID, A_SID, A_ON, A_MONTH, A_DAY,A_YEAR)
+        VALUES (SEQ_T_ATTENDANCE.nextval,#{staff.id},#{onTime},#{month},#{day},#{year} )
     </insert>
     <update id="addOff">
         UPDATE T_ATTENDANCE SET T_ATTENDANCE.A_OFF=#{offTime} WHERE T_ATTENDANCE.A_ID=#{id}
     </update>
     <select id="getOnNow" resultMap="attendanceMap">
         SELECT * FROM T_ATTENDANCE a,T_STAFF s
-        WHERE a.A_SID=s.S_ID AND s.S_ID=#{0} AND a.A_MONTH=#{1} AND a.A_DAY=#{2}
+        WHERE a.A_SID=s.S_ID AND s.S_ID=#{0} AND a.A_MONTH=#{1} AND a.A_DAY=#{2} AND a.A_YEAR=#{3}
     </select>
     <select id="getAByStaff" resultMap="attendanceMap">
-        SELECT * FROM T_ATTENDANCE WHERE T_ATTENDANCE.A_SID=#{id}
+        SELECT * FROM T_ATTENDANCE WHERE A_SID=#{id}
     </select>
     <select id="getAByStaffMonth" resultMap="attendanceMap">
         SELECT * FROM T_ATTENDANCE WHERE T_ATTENDANCE.A_SID=#{0} AND T_ATTENDANCE.A_MONTH=#{1}
@@ -45,5 +46,11 @@
         (SELECT rownum rn,a.* FROM T_ATTENDANCE a
         WHERE a.A_SID=#{0})A
         WHERE A.rn between #{1} and #{2}
+    </select>
+    <select id="aSize" resultType="java.lang.Integer">
+        SELECT COUNT(*)  FROM T_ATTENDANCE WHERE A_SID=#{0} AND A_MONTH=#{1} AND A_YEAR=#{2}
+    </select>
+    <select id="getAByStaffDate" resultMap="attendanceMap">
+        SELECT * FROM T_ATTENDANCE WHERE A_SID=#{0} AND A_MONTH=#{1} AND A_YEAR=#{2}
     </select>
 </mapper>

@@ -37,5 +37,10 @@
 <a href="offTrain">查看未发布培训</a>
 <a href="onTrain">查看已发布培训</a><br/>
 ${fail}
+${failBeFull}
+${failChanging}
+<form action="mConsole" method="post">
+    <input type="submit" name="返回" value="返回上一页"/>
+</form>
 </body>
 </html>

@@ -25,8 +25,17 @@ public class Staff implements Serializable{
     private List<Train> trains;//ÅàÑµ
     private List<Reward> rewards;//½±³Í
     private List<Attendance> attendances;//¿¼ÇÚ
+    private List<Pay> pays;//Ð½×Ê
 
     public Staff() {
+    }
+
+    public List<Pay> getPays() {
+        return pays;
+    }
+
+    public void setPays(List<Pay> pays) {
+        this.pays = pays;
     }
 
     public List<Reward> getRewards() {
@@ -185,6 +194,7 @@ public class Staff implements Serializable{
                 ", trains=" + trains +
                 ", rewards=" + rewards +
                 ", attendances=" + attendances +
+                ", pays=" + pays +
                 '}';
     }
 }

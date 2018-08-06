@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.show.dao.PayMapper">
+    <resultMap id="payMap" type="pay">
+        <id property="id" column="PA_ID"/>
+        <result property="base" column="PA_BASE"/>
+        <result property="bonus" column="PA_BONUS"/>
+        <result property="ov" column="PA_OV"/>
+        <result property="rew" column="PA_REW"/>
+        <result property="ss" column="PA_SS"/>
+        <result property="year" column="PA_YEAR"/>
+        <result property="month" column="PA_MONTH"/>
+        <result property="state" column="PA_STATE"/>
+        <result property="intro" column="PA_INTRO"/>
+        <association property="staff" javaType="staff">
+            <id property="id" column="S_ID"/>
+            <result property="sName" column="S_SNAME"/>
+        </association>
+    </resultMap>
+    <insert id="addPay">
+        INSERT INTO T_PAY(PA_ID, PA_MONTH, PA_SID, PA_BASE, PA_BONUS, PA_OV, PA_REW, PA_SS, PA_YEAR)
+         VALUES (SEQ_T_PAY.nextval,#{month},#{staff.id},#{base},#{bonus},#{ov},#{rew},#{ss},#{year})
+    </insert>
+    <update id="changeState">
+        UPDATE T_PAY SET PA_STATE=#{state},PA_INTRO=#{intro} WHERE PA_ID=#{id}
+    </update>
+    <update id="changeStateOnly">
+        UPDATE T_PAY SET PA_STATE=#{state} WHERE PA_ID=#{id}
+    </update>
+    <select id="getPayByStaff" resultMap="payMap">
+        SELECT * FROM T_PAY WHERE T_PAY.PA_SID=#{id}
+    </select>
+    <select id="getPayByStaffPage" resultMap="payMap">
+        SELECT * FROM
+        (SELECT rownum rn,p.* FROM T_PAY p
+        WHERE p.PA_SID=#{0})A
+        WHERE A.rn between #{1} and #{2}
+    </select>
+    <select id="getPayByState" resultMap="payMap">
+        SELECT * FROM T_PAY WHERE PA_STATE=#{state}
+    </select>
+    <select id="getPayByStatePage" resultMap="payMap">
+        SELECT * FROM
+        (SELECT rownum rn,p.*,s.* FROM T_PAY p,T_STAFF s
+        WHERE p.PA_SID=s.S_ID AND p.PA_STATE=#{0})A
+        WHERE A.rn between #{1} and #{2}
+    </select>
+    <select id="getPayById" resultMap="payMap">
+        SELECT * FROM T_PAY p,T_STAFF s WHERE p.PA_SID=s.S_ID AND PA_ID=#{id}
+    </select>
+</mapper>

@@ -12,16 +12,26 @@ public class Attendance implements Serializable{
     private Date offTime;
     private int month;
     private int day;
+    private int year;
     private Staff staff;
 
     public Attendance() {
     }
 
-    public Attendance(Date onTime, int month, int day, Staff staff) {
+    public Attendance(Date onTime, int month, int day, int year, Staff staff) {
         this.onTime = onTime;
         this.month = month;
         this.day = day;
+        this.year = year;
         this.staff = staff;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
     }
 
     public int getMonth() {
@@ -81,6 +91,7 @@ public class Attendance implements Serializable{
                 ", offTime=" + offTime +
                 ", month=" + month +
                 ", day=" + day +
+                ", year=" + year +
                 ", staff=" + staff +
                 '}';
     }
